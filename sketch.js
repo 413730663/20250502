@@ -24,7 +24,7 @@ function draw() {
   push();
   translate(width / 2, height / 2); // 將原點移到畫布中央
   scale(-1, 1); // 水平翻轉
-  image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
+  //image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
   pop();
   
   // 更新 graphics 的內容
