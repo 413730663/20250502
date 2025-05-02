@@ -1,4 +1,5 @@
 let capture;
+let graphics;
 
 function setup() {
   // 建立全螢幕畫布
@@ -10,6 +11,9 @@ function setup() {
   capture = createCapture(VIDEO);
   capture.size(windowWidth * 0.8, windowHeight * 0.8); // 設定影像大小為視窗的 80%
   capture.hide(); // 隱藏原始的攝影機畫面
+  
+  // 建立與攝影機影像相同大小的圖形
+  graphics = createGraphics(capture.width, capture.height);
 }
 
 function draw() {
@@ -22,6 +26,20 @@ function draw() {
   scale(-1, 1); // 水平翻轉
   image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
   pop();
+  
+  // 更新 graphics 的內容
+  graphics.background(0); // 設定背景為黑色
+  for (let x = 0; x < graphics.width; x += 20) {
+    for (let y = 0; y < graphics.height; y += 20) {
+      let col = capture.get(x, y); // 從攝影機影像取得顏色
+      graphics.fill(col);
+      graphics.noStroke();
+      graphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形
+    }
+  }
+  
+  // 將 graphics 顯示在攝影機影像的上方
+  image(graphics, (width - graphics.width) / 2, (height - graphics.height) / 2 - graphics.height / 2);
 }
 
 function windowResized() {
