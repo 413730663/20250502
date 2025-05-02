@@ -8,7 +8,7 @@
 影像畫面寬高為視窗大小的80%
 請把程式碼寫在sketch.js內
 
-說明：
+### 說明：
 1. createCanvas(windowWidth, windowHeight)：建立全螢幕畫布。
 2. background('#b5e2fa')：設定背景顏色為 b5e2fa。
 3. createCapture(VIDEO)：啟用攝影機。
@@ -18,6 +18,8 @@
 
 
 ---
+
+### 產生的程式碼
 
 ```javascript=
 let capture;
@@ -48,3 +50,15 @@ function windowResized() {
 }
 
 ```
+
+---
+
+## 第二條指令
+
+攝影機顯示的畫面左右顛倒，請調整
+
+### 說明：
+1.push() 和 pop()：確保翻轉操作只影響攝影機影像，不影響其他畫布內容。
+2.translate(width / 2, height / 2)：將畫布的原點移到中央，方便翻轉影像。
+3.scale(-1, 1)：水平翻轉畫布，修正影像左右顛倒的問題。
+4.image(capture, -capture.width / 2, -capture.height / 2)：翻轉後正確繪製影像。
