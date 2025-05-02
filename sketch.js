@@ -16,8 +16,12 @@ function draw() {
   // 繪製背景
   background('#b5e2fa');
   
-  // 將攝影機影像顯示在畫布中央
-  image(capture, (width - capture.width) / 2, (height - capture.height) / 2);
+  // 翻轉畫布以修正影像左右顛倒
+  push();
+  translate(width / 2, height / 2); // 將原點移到畫布中央
+  scale(-1, 1); // 水平翻轉
+  image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
+  pop();
 }
 
 function windowResized() {
