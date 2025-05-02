@@ -24,7 +24,7 @@ function draw() {
   push();
   translate(width / 2, height / 2); // 將原點移到畫布中央
   scale(-1, 1); // 水平翻轉
-  //image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
+  image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
   pop();
   
   // 更新 graphics 的內容
@@ -38,8 +38,10 @@ function draw() {
     }
   }
   
-  // 將 graphics 顯示在攝影機影像的上方
-  image(graphics, (width - graphics.width) / 2, (height - graphics.height) / 2 - graphics.height / 2);
+  // 將 graphics 顯示在畫面中央，並縮放為視窗的 80%
+  let scaledWidth = windowWidth * 0.8;
+  let scaledHeight = windowHeight * 0.8;
+  image(graphics, (width - scaledWidth) / 2, (height - scaledHeight) / 2, scaledWidth, scaledHeight);
 }
 
 function windowResized() {
