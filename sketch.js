@@ -24,24 +24,23 @@ function draw() {
   push();
   translate(width / 2, height / 2); // 將原點移到畫布中央
   scale(-1, 1); // 水平翻轉
-  //image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
+  image(capture, -capture.width / 2, -capture.height / 2); // 繪製影像
   pop();
   
   // 更新 graphics 的內容
   graphics.background(0); // 設定背景為黑色
-  graphics.push();
-  graphics.translate(graphics.width / 2, graphics.height / 2); // 將原點移到 graphics 中央
-  graphics.scale(-1, 1); // 水平翻轉
-  graphics.translate(-graphics.width / 2, -graphics.height / 2); // 還原原點位置
   for (let x = 0; x < graphics.width; x += 20) {
     for (let y = 0; y < graphics.height; y += 20) {
       let col = capture.get(x, y); // 從攝影機影像取得顏色
       graphics.fill(col);
       graphics.noStroke();
-      graphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形
+      graphics.rect(x, y, 18, 18); // 繪製方框
+      
+      // 在方框中間繪製黑色圓
+      graphics.fill(0);
+      graphics.ellipse(x + 9, y + 9, 5, 5); // 圓的直徑為 5，置於方框中央
     }
   }
-  graphics.pop();
   
   // 將 graphics 顯示在畫面中央，並縮放為視窗的 80%
   let scaledWidth = windowWidth * 0.8;
