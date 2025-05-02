@@ -29,6 +29,10 @@ function draw() {
   
   // 更新 graphics 的內容
   graphics.background(0); // 設定背景為黑色
+  graphics.push();
+  graphics.translate(graphics.width / 2, graphics.height / 2); // 將原點移到 graphics 中央
+  graphics.scale(-1, 1); // 水平翻轉
+  graphics.translate(-graphics.width / 2, -graphics.height / 2); // 還原原點位置
   for (let x = 0; x < graphics.width; x += 20) {
     for (let y = 0; y < graphics.height; y += 20) {
       let col = capture.get(x, y); // 從攝影機影像取得顏色
@@ -37,11 +41,11 @@ function draw() {
       graphics.ellipse(x + 10, y + 10, 15, 15); // 繪製圓形
     }
   }
+  graphics.pop();
   
   // 將 graphics 顯示在畫面中央，並縮放為視窗的 80%
   let scaledWidth = windowWidth * 0.8;
   let scaledHeight = windowHeight * 0.8;
-  scale(-1, 1);
   image(graphics, (width - scaledWidth) / 2, (height - scaledHeight) / 2, scaledWidth, scaledHeight);
 }
 
