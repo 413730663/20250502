@@ -107,10 +107,10 @@ function windowResized() {
 一樣的寬高一樣的大小內容，該圖片顯示在視訊畫面的上方
 
 ### 說明：
-createGraphics(capture.width, capture.height)：建立一個與攝影機影像相同大小的圖形。
-graphics.background(255, 0, 0)：設定圖形的背景顏色為紅色（可根據需求修改）。
-image(graphics, x, y)：將圖形繪製在攝影機影像的上方。
-位置調整：圖形的位置設置為攝影機影像的正上方，透過計算 y 座標進行調整。
+1.createGraphics(capture.width, capture.height)：建立一個與攝影機影像相同大小的圖形。
+2.graphics.background(255, 0, 0)：設定圖形的背景顏色為紅色（可根據需求修改）。
+3.image(graphics, x, y)：將圖形繪製在攝影機影像的上方。
+4.位置調整：圖形的位置設置為攝影機影像的正上方，透過計算 y 座標進行調整。
 
 
 ### 產生的程式碼
@@ -156,3 +156,6 @@ function windowResized() {
 }
 
 ```
+
+---
+
